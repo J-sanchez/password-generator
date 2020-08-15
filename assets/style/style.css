@@ -29,7 +29,7 @@ header {
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
 }
-
+/*start card*/
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -71,7 +71,7 @@ header {
   display: block;
   clear: both;
 }
-
+/*End Card Start Button*/
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -117,7 +117,7 @@ button[disabled] {
   resize: none;
   overflow: hidden;
 }
-
+/*Media*/
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

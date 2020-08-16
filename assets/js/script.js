@@ -26,7 +26,19 @@ while(Length <= 7 || Length >= 129 );{
 // Tell User How Many Characters the Password will have
 alert('Your New Password WILL Contain $(Length) Characters');
 
-
+// Password Character List
+var SpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+var NumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
+var LowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+var UpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+  // Loop If Answers 
+  while(UpperCase === false && LowerCase === false && SpecialCharacter === false && NumericCharacter === false) {
+    alert("You must choose at least one parameter");
+    var SpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+    var NumericCharacter = confirm("Click OK to confirm if you would like to include numerbers");    
+    var LowerCase = confirm("Click OK to confirm if you would like to include lowercase letters");
+    var UpperCase = confirm("Click OK to confirm if you would like to include uppercase letters");   
+} 
 
 
 // Get references to the #generate element

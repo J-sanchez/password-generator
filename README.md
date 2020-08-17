@@ -4,7 +4,7 @@ link: https://j-sanchez.github.io/password-generator/.
 
 ![First Image](assets/images/first.jpg)
 
-![Second Image](assets/images/secondjpg)
+![Second Image](assets/images/second.jpg)
 
 # Instructions 
 

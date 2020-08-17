@@ -2,7 +2,8 @@
 
 link: https://j-sanchez.github.io/password-generator/.
 
-#Purpose
+# Purpose
+
 To Randomly Generate a Password That Meets Certain Criteria, So That One May Create a Strong Password!
 
 ![First Image](assets/images/first.jpg)

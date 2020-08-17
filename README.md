@@ -2,6 +2,9 @@
 
 link: https://j-sanchez.github.io/password-generator/.
 
+#Purpose
+To Randomly Generate a Password That Meets Certain Criteria, So That One May Create a Strong Password!
+
 ![First Image](assets/images/first.jpg)
 
 ![Second Image](assets/images/second.jpg)
@@ -23,3 +26,5 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
+
+*Jonathan C. Sanchez

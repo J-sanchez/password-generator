@@ -1,85 +1,76 @@
 // var characters
-var number = ["0","1","2","3","4","5","6","7","8","9"]
-var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+number = ["0","1","2","3","4","5","6","7","8","9"]
+alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
-var confirmLength = "";
+function generatePass(){
+    var confirmLength = "";
 var confirmSpecialCharacter;
 var confirmLowerCase;
 var confirmUpperCase;
 var confirmNumericalCharacters;
+var evryChar = [];
 
-//Amount of Characters
-function generatePassword() {
-  alert("Press Generate for New Password")
+window.onload = alert("Hello! Click 'Generate' for Your New Password!")
+
+var get = document.querySelector("#generate");
+
+get.addEventListener("click", function () {
+    ps = generatePassword();
+    document.getElementById("password").placeholder = ps;
+});
+
+var confirmLength = prompt("How many characters would you like your password to be?");
+
+if(confirmLength <8 || confirmLength > 128){
+    alert("It is recommended to have a password between 8 and 128 characters long!\nPlease start over.");
 }
 
-while(confirmLength <= 7 || confirmLength >= 129 ) {
-  alert("Password Must Be Between The Parameters of 8-128");
-  var confirmLength = (prompt("How Many Characters Would You Like your Password to Be?"));
+// Confirm the rest of character conditions
+
+else{
+    if(confirm("Would you like your password to contain upper case letters?")){
+        Array.prototype.push.apply(evryChar, confirmUpperCase);
+    }
+
+    if(confirm("Would you like your password to contain lower case letters?")){
+        Array.prototype.push.apply(evryChar, confirmLowerCase);
+    }
+
+    if(confirm("Would you like your password to contain numbers?")){
+        Array.prototype.push.apply(evryChar, confirmNumericalCharacters);
+    }
+
+    if(confirm("Would you like your password to contain symbols?")){
+        Array.prototype.push.apply(evryChar, confirmSpecialCharacter);
+    }
+
+    if(confirmSpecialCharacter.length===0){
+        alert("You must select at lease 1 type of characters to generate a password!\nPlease start over.");
+    }
+
+// Run for loop to use confirmed information and generate password as a result
+
+    else{
+        for(var i=0; i<confirmLength; i++){
+            var random = Math.floor(Math.random()*confirmSpecialCharacter.length);
+            resultPass += confirmSpecialCharacter[random];
+        }
+    }
+    }
+
+// Display the result
+
+    document.getElementById("password").innerHTML = resultPass;
 }
 
-// Tell User How Many Characters the Password will have
-alert(`Your Password Will Contain ${confirmLength} characters`);
+// Bonus! function to copy password to clipboard
 
-// Password Character List
-var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-var comfirmNumericalCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
-var confirmLowerCase = confirm("Click OK to confirm if you would like to include confirmLowerCase characters");
-var confirmUpperCase = confirm("Click OK to confirm if you would like to include confirmUpperCase characters");
+function copyPass(){
 
-var PassChar = []
+document.querySelector("textarea").select();
+document.execCommand("Copy");
+alert("Password copied to clipboard!");
+}
 
- if (confirmSpecialCharacter && confirmNumericalCharacters && confirmLowerCase && confirmUpperCase) {
-
-        PassChar = specialChar.concat(number, alphaUpper, alphaLower);
-    }
-    // Else if for 3 positive options
-    else if (confirmSpecialCharacter && confirmNumericalCharacters && confirmLowerCase) {
-        PassChar = specialChar.concat(number, alphaLower);
-    }
-    else if (confirmSpecialCharacter && confirmNumericalCharacters && confirmUpperCase) {
-        PassChar = specialChar.concat(number, alphaUpper);
-    }
-    else if (confirmSpecialCharacter && confirmUpperCase && confirmUpperCase) {
-        PassChar = specialChar.concat(alphaUpper, alphaLower);
-    }
-    else if (confirmNumericalCharacters && confirmUpperCase && confirmUpperCase) {
-        PassChar = number.concat(alphaUpper, alphaLower);
-    }
-    // Else if for 2 positive options 
-    else if (confirmSpecialCharacter && confirmNumericalCharacters) {
-        PassChar = specialChar.concat(number);
-
-    } else if (confirmSpecialCharacter && confirmUpperCase) {
-        PassChar = specialChar.concat(alphaUpper);
-
-    } else if (confirmSpecialCharacter && confirmUpperCase) {
-        PassChar = specialChar.concat(alphaLower);
-    }
-    else if (confirmUpperCase && confirmNumericalCharacters) {
-        PassChar = alpha.concat(number);
-
-    } else if (confirmLowerCase && confirmUpperCase) {
-        PassChar = alpha.concat(alphaLower);
-
-    } else if (confirmNumericalCharacters && confirmUpperCase) {
-        PassChar = number.concat(alphaLower);
-    }
-    // Else if for 1 positive option
-    else if (confirmSpecialCharacter) {
-        PassChar = specialChar;
-    }
-    else if (confirmNumericalCharacters) {
-        PassChar = number;
-    }
-    else if (confirmUpperCase) {
-        PassChar = alphaUpper;
-    }
-    // Created space variable to fill confirmUpperCase conversion
-    else if (confirmLowerCase) {
-        PassChar = space.concat(alphaLower);
-    };
-
-  
